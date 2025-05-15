@@ -36,6 +36,22 @@ scores배열의 데이터를 표를 이용하여 출력하기
 			<th>총점</th>
 			<th>평균</th>
 		</tr>
+		<% for(int i=0; i<scores.length; i++){%>
+			<tr>
+				<td><%=i+1%>번 학생</td>
+				<td><%=scores[i][0]%></td>
+				<td><%=scores[i][1]%></td>
+				<td><%=scores[i][2]%></td>
+				<% 
+				int sum = 0;
+				for(int j=0; j<scores[i].length; j++){ 
+					sum+=scores[i][j];
+				} 
+				double avg = sum/scores[i].length;%>
+				<td><%=sum %></td>
+				<td><%=avg %></td>
+			</tr>
+		<%}%>
 	</table>
 </body>
 </html>
