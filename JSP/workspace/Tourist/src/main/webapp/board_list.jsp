@@ -91,7 +91,7 @@
 						<tr>
 							<td><%=virtualNum%></td>
 							<td class="tit_notice">
-								<a href="javascript:;">
+								<a href="board_view.jsp?num=<%=dto.getNum()%>">
 									<%=dto.getTitle()%>
 								</a>
 							</td>

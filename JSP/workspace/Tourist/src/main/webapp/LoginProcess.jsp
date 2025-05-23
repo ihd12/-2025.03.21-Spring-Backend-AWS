@@ -9,6 +9,7 @@
 	MemberDTO dto = dao.getMember(id, pw);
 	if(dto.getId()!=null){
 		session.setAttribute("userDTO",dto);
+		session.setAttribute("UserId", id);
 		response.sendRedirect("index.jsp");
 	}else{
 		request.setAttribute("loginErrMsg", "아이디나 비밀번호를 확인해주세요.");
