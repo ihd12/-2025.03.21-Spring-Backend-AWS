@@ -54,6 +54,28 @@
   <session-config>
   	<session-timeout>20</session-timeout>
   </session-config>
+  <context-param>
+  	<param-name>POSTS_PER_PAGE</param-name>
+  	<param-value>10</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>PAGES_PER_BLOCK</param-name>
+  	<param-value>10</param-value>
+  </context-param>
+  <!-- 자바파일을 연결하기 위한 설정 -->
+  <!-- <servlet>
+  	서블릿 이름 설정
+  	<servlet-name>HelloServlet</servlet-name>
+  	자바파일의 경로 설정
+  	<servlet-class>servlet.HelloServlet</servlet-class>
+  </servlet>
+  서블릿과 URI연결하는 설정
+  <servlet-mapping>
+  	연결할 서블릿 이름 설정
+  	<servlet-name>HelloServlet</servlet-name>
+  	서블릿에 연결할 URI 설정
+  	<url-pattern>/12Servlet/HelloServlet.do</url-pattern>
+  </servlet-mapping> -->
 </web-app>
 
 

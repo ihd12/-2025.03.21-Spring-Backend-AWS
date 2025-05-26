@@ -111,6 +111,36 @@ public class BoardDAO extends DBConnPool{
 			e.printStackTrace();
 		}
 	}
+	public int updateBoard(BoardDTO dto) {
+		int result = 0;
+		try {
+			String query = "UPDATE tourist_board SET title=?, content=? "
+					+ "WHERE num=?";
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setInt(3, dto.getNum());
+			result = psmt.executeUpdate();
+			
+		}catch(Exception e) {
+			System.out.println("수정 처리 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public int deleteBoard(int num) {
+		int result = 0;
+		try {
+			String query = "DELETE FROM tourist_board WHERE num=?";
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, num);
+			result = psmt.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("삭제 중 예외가 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
 
 
