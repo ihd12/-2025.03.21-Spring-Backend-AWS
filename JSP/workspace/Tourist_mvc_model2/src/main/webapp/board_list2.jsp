@@ -1,14 +1,6 @@
-<%@page import="board.dto.BoardDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.Map"%>
-<%@page import="board.dao.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	List<BoardDTO> boardLists = (List<BoardDTO>)request.getAttribute("boardLists");
-	int totalCount = (int)request.getAttribute("totalCount");
-%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -70,30 +62,29 @@
 					</tr>
 				</thead>
 				<tbody>
-				<%if(boardLists.isEmpty()){ %>
-					<tr>
-						<td colspan="5" align="center">
-							등록된 게시물이 없습니다^^*
-						</td>
-					</tr>
-				<%}else{
-					int virtualNum = 0;
-					for(BoardDTO dto : boardLists){
-						virtualNum = totalCount--;
-						%>
+				<c:choose>
+					<c:when test="${empty boardLists}">
 						<tr>
-							<td><%=virtualNum%></td>
-							<td class="tit_notice">
-								<a href="board_view.jsp?num=<%=dto.getNum()%>">
-									<%=dto.getTitle()%>
-								</a>
+							<td colspan="5" align="center">
+								등록된 게시물이 없습니다^^*
 							</td>
-							<td><%=dto.getVisitCount() %></td>
-							<td><%=dto.getPostDate() %></td>
 						</tr>
-						
-				<%}
-				}%>	
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="dto" items="${boardLists}" varStatus="loop">
+							<tr>
+								<td>${totalCount-loop.index}</td>
+								<td class="tit_notice">
+									<a href="board_view.jsp?num=${dto.num}">
+										${dto.title}
+									</a>
+								</td>
+								<td>${dto.visitCount}</td>
+								<td>${dto.postDate}</td>
+							</tr>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 				</tbody>
 			</table>
 			<!-- pagination -->

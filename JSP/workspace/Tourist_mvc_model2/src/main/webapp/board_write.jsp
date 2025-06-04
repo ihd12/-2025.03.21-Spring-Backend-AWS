@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="./IsLoggedIn.jsp" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -43,7 +42,7 @@
 
 		<!-- bodytext_area -->
 		<div class="bodytext_area box_inner">	
-			<form action="boardWrite_process.jsp" method="POST">		
+			<form action="./boardwrite.do" method="POST">		
 			<ul class="bbsview_list">
 					<li class="bbs_title">제목 : <input type="text" name="title" size="100" placeholder="제목을 입력해주세요."></li>
 					<li class="bbs_content">

@@ -16,7 +16,6 @@ public class BoardDAO extends DBConnPool{
 			query += " WHERE title "
 					+" LIKE '%" + map.get("searchWord") + "%'";
 		}
-		System.out.println(query);
 		try {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);

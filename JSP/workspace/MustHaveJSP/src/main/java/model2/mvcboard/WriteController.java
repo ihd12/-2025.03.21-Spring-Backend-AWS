@@ -22,9 +22,7 @@ public class WriteController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//화면에 출력할 데이터가 없기 때문에 바로 forward로 JSP파일을 실행함 
-		req
-		.getRequestDispatcher("/14MVCBoard/Write.jsp")
-		.forward(req, resp);
+		req.getRequestDispatcher("/14MVCBoard/Write.jsp").forward(req, resp);
 	}
 	
 	@Override

@@ -15,14 +15,19 @@
 						</span>
 					</li>
 					<%} %>
+					
+					<%if(session.getAttribute("userDTO")==null){ %>
 					<li>
-						<%if(session.getAttribute("userDTO")==null){ %>
-							<a href="./login.do">로그인</a>
-						<%}else{ %>
-							<a href="./logout.do">로그아웃</a>
-						<%} %>
+						<a href="./login.do">로그인</a>
 					</li>
-					<li><a href="./join.do">회원가입</a></li>
+					<li>
+						<a href="./join.do">회원가입</a>
+					</li>
+					<%}else{ %>
+					<li>
+						<a href="./logout.do">로그아웃</a>
+					</li>
+					<%} %>
 				</ul>		
 				<nav>
 				<ul class="gnb clear">
