@@ -113,7 +113,8 @@ public class BoardDAO extends DBConnPool{
 	public int updateBoard(BoardDTO dto) {
 		int result = 0;
 		try {
-			String query = "UPDATE tourist_board SET title=?, content=? "
+			String query = "UPDATE tourist_board "
+					+ "SET title=?, content=? "
 					+ "WHERE num=?";
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
