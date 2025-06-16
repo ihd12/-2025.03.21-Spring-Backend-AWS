@@ -8,4 +8,6 @@ public interface BoardMapper {
     List<BoardVO> selectAll();
     BoardVO selectOne(int num);
     void updateVisitCount(int num);
+    void deleteBoard(int num);
+    void updateBoard(BoardVO boardVO);
 }

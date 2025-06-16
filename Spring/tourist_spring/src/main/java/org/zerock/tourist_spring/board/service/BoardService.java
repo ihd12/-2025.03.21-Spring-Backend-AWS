@@ -7,4 +7,7 @@ import java.util.List;
 public interface BoardService {
     List<BoardDTO> findAll();
     BoardDTO findOne(int num);
+    void removeBoard(int num);
+    void editBoard(BoardDTO boardDTO);
+    BoardDTO findOneEdit(int num);
 }

@@ -13,4 +13,22 @@
         INSERT INTO tourist_member(id,email,name,password,phone,gender,agree,content)
         VALUES (#{id}, #{email}, #{name},#{password},#{phone},#{gender},#{agree},#{content});
     </insert>
+    <select id="selectLogin" resultType="org.zerock.tourist_spring.member.vo.MemberVO">
+        SELECT * FROM tourist_member
+        WHERE id=#{id} and password=#{password}
+    </select>
+    <select id="selectLogin2" resultType="org.zerock.tourist_spring.member.vo.MemberVO">
+        SELECT * FROM tourist_member
+        WHERE id=#{id} and password=#{pw}
+    </select>
 </mapper>
+
+
+
+
+
+
+
+
+
+

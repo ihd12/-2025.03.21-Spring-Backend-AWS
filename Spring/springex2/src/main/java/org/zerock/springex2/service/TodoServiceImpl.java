@@ -76,4 +76,26 @@ public class TodoServiceImpl implements TodoService{
         // 완성된 DTO를 Controller로 반환
         return dto;
     }
+
+    @Override
+    public void removeTodo(Long tno) {
+        todoMapper.deleteTodo(tno);
+    }
+
+    @Override
+    public String editTodo(TodoDTO todoDTO){
+        // 데이터가 존재하는지 확인
+        TodoVO vo = todoMapper.selectOne(todoDTO.getTno());
+        if(vo != null){
+            // 데이터가 있으면 변경 가능한 데이터를 변경
+            vo.changeTodo(todoDTO.getTitle(),
+                    todoDTO.getDueDate(),
+                    todoDTO.isFinished());
+            // update문 실행
+            todoMapper.updateTodo(vo);
+            return "수정했습니다.";
+        }else{
+            return "수정 처리중 예외가 발생했습니다.";
+        }
+    }
 }

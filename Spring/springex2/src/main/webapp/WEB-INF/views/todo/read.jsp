@@ -93,8 +93,12 @@
 <!-- 부트스트랩 JavaScript를 CDN방식으로 다운로드 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script>
+    let msg = '${empty msg?"":msg}';
+    if(msg != null && msg.length > 0){
+        alert(msg);
+    }
     document.querySelector(".btn-primary").addEventListener("click", function(e){
-        self.location="/todo/modify?tno="+${dto.tno};
+        self.location="/todo/edit?tno="+${dto.tno};
     })
     document.querySelector(".btn-secondary").addEventListener("click", function(e){
         self.location="/todo/list";

@@ -34,7 +34,9 @@ public class BoardServiceImpl implements BoardService {
     public BoardDTO findOne(int num){
         // 조회수 증가 SQL실행
         boardMapper.updateVisitCount(num);
+        // num을 기준으로 데이터를 저장
         BoardVO vo = boardMapper.selectOne(num);
+        // 화면에서 사용하는 객체인 DTO로 변경
         BoardDTO dto = BoardDTO.builder()
                 .num(vo.getNum())
                 .title(vo.getTitle())
@@ -46,4 +48,33 @@ public class BoardServiceImpl implements BoardService {
                 .build();
         return dto;
     }
+
+    @Override
+    public BoardDTO findOneEdit(int num) {
+        // num을 기준으로 데이터를 저장
+        BoardVO vo = boardMapper.selectOne(num);
+        // 화면에서 사용하는 객체인 DTO로 변경
+        BoardDTO dto = BoardDTO.builder()
+                .num(vo.getNum())
+                .title(vo.getTitle())
+                // 모든 엔터키를 <br/> 태그로 변경
+                .content(vo.getContent())
+                .id(vo.getId())
+                .postdate(vo.getPostdate())
+                .visitcount(vo.getVisitcount())
+                .build();
+        return dto;
+    }
+
+    @Override
+    public void removeBoard(int num){
+        boardMapper.deleteBoard(num);
+    }
+    @Override
+    public void editBoard(BoardDTO boardDTO){
+        BoardVO vo = boardMapper.selectOne(boardDTO.getNum());
+        vo.changeBoard(boardDTO);
+        boardMapper.updateBoard(vo);
+    }
+
 }

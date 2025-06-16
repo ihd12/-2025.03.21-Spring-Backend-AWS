@@ -24,7 +24,7 @@
                 // num데이터를 전달하기 위한 input 히든 태그를 추가
                 formObj.innerHTML = "<input type='hidden' name='num' value='${dto.num}' />";
                 formObj.method="post";
-                formObj.action="./boardremove.do";
+                formObj.action="/board/remove";
                 // body에 생성한 폼 태그를 추가하여 실행 가능한 상태로 변경
                 document.body.appendChild(formObj);
                 formObj.submit();
@@ -72,7 +72,7 @@
                 <c:if test="${sessionScope.UserId != null
 					and sessionScope.UserId == dto.id}">
                     <a onclick="deletePost()" class="btn_bbs">삭제하기</a>
-                    <a href="./boardedit.do?num=${dto.num }" class="btn_bbs">수정하기</a>
+                    <a href="/board/edit?num=${dto.num }" class="btn_bbs">수정하기</a>
                 </c:if>
                 <a href="/board/list" class="btn_bbs">목록</a>
             </p>
