@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.zerock.tourist_spring.board.dto.BoardDTO;
 import org.zerock.tourist_spring.board.mapper.BoardMapper;
 import org.zerock.tourist_spring.board.vo.BoardVO;
+import org.zerock.tourist_spring.common.dto.PageRequestDTO;
+import org.zerock.tourist_spring.common.dto.PageResponseDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +33,28 @@ public class BoardServiceImpl implements BoardService {
                 .collect(Collectors.toList());
         return dtoList;
     }
+
+    @Override
+    public PageResponseDTO<BoardDTO> findList(PageRequestDTO pageRequestDTO) {
+        int totalCount = boardMapper.getCount();
+        List<BoardDTO> dtoList = boardMapper.selectList(pageRequestDTO).stream()
+                .map(vo-> BoardDTO.builder()
+                        .num(vo.getNum())
+                        .title(vo.getTitle())
+                        .content(vo.getContent())
+                        .id(vo.getId())
+                        .postdate(vo.getPostdate())
+                        .visitcount(vo.getVisitcount())
+                        .build()
+                )
+                .collect(Collectors.toList());
+        return PageResponseDTO.<BoardDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(dtoList)
+                .total(totalCount)
+                .build();
+    }
+
     public BoardDTO findOne(int num){
         // 조회수 증가 SQL실행
         boardMapper.updateVisitCount(num);

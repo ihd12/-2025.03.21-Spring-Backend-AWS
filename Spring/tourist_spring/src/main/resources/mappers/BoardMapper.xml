@@ -7,6 +7,12 @@
     <select id="selectAll" resultType="org.zerock.tourist_spring.board.vo.BoardVO">
         SELECT * FROM tourist_board ORDER BY num DESC
     </select>
+    <select id="selectList" resultType="org.zerock.tourist_spring.board.vo.BoardVO">
+        SELECT * FROM tourist_board ORDER BY num DESC LIMIT #{skip}, #{size}
+    </select>
+    <select id="getCount" resultType="int">
+        SELECT COUNT(*) FROM tourist_board
+    </select>
     <select id="selectOne" resultType="org.zerock.tourist_spring.board.vo.BoardVO">
         SELECT * FROM tourist_board WHERE num = #{num}
     </select>
@@ -20,7 +26,7 @@
     </delete>
     <update id="updateBoard">
         UPDATE tourist_board
-        SET titie=#{title}, content=#{content}
+        SET title=#{title}, content=#{content}
         WHERE num = #{num}
     </update>
 </mapper>
