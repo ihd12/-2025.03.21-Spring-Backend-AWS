@@ -90,7 +90,22 @@ public class BoardController {
         }
     }
     @GetMapping("/write")
-    public String getWrite(){
+    public String getWrite(HttpSession session, RedirectAttributes redirectAttributes){
+        if(session.getAttribute("UserId") == null){
+            redirectAttributes.addFlashAttribute("msg","로그인 해주세요");
+            return "redirect:/board/list";
+        }
         return "write";
+    }
+    @PostMapping("/write")
+    public String postWrite(BoardDTO boardDTO, HttpSession session, RedirectAttributes redirectAttributes){
+        Object id = session.getAttribute("UserId");
+        if(id == null){
+            redirectAttributes.addFlashAttribute("msg","로그인 해주세요");
+            return "redirect:/board/list";
+        }
+        boardDTO.setId(id.toString());
+        int num = boardService.addBoard(boardDTO);
+        return "redirect:/board/read?num="+num;
     }
 }
