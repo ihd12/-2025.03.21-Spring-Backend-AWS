@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -52,7 +53,9 @@
                     </div>
                     <div class="my-4">
                         <div class="float-end">
-                            <button type="button" class="btn btn-primary">Modify</button>
+                            <c:if test="${not empty sessionScope.UserId and sessionScope.UserId eq dto.writer}">
+                                <button type="button" class="btn btn-primary">Modify</button>
+                            </c:if>
                             <button type="button" class="btn btn-secondary">List</button>
                         </div>
                     </div>

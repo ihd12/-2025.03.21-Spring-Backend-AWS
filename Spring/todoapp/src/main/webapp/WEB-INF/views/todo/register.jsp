@@ -34,7 +34,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">Writer</span>
-                            <input type="text" name="writer" class="form-control" placeholder="Writer"/>
+                            <input type="text" name="writer" value="${sessionScope.UserId}" class="form-control" placeholder="Writer" readonly/>
                         </div>
                         <div class="my-4">
                             <div class="float-end">

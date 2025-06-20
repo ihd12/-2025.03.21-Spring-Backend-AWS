@@ -78,7 +78,7 @@
                                 </td>
                                 <td><c:out value="${dto.writer}"/></td>
                                 <td>${dto.dueDate}</td>
-                                <td>${dto.finished}</td>
+                                <td>${dto.finished ? "O" : "X"}</td>
                             </tr>
                         </c:forEach>
                         </tbody>
