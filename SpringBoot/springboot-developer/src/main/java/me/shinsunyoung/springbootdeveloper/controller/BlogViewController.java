@@ -23,7 +23,7 @@ public class BlogViewController {
                 .stream().map(ArticleListViewResponse::new)
                 .toList();
         model.addAttribute("articles", articles);
-        return "articleList";
+        return "todo/articleList";
     }
     @GetMapping("/articles/{id}")
     public String getArticle(@PathVariable("id") Long id, Model model){

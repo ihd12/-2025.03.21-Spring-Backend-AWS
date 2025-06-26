@@ -75,17 +75,11 @@
             </table>
             <!-- pagination -->
             <div class="pagination">
-<!--                <a data-num="1" class="firstpage  pbtn"><img data-num="1" src="/img/btn_firstpage.png" alt="첫 페이지로 이동"></a>-->
-<!--                <c:if test="${responseDTO.prev}">-->
-<!--                    <a data-num="${responseDTO.start-1}" class="prevpage  pbtn"><img data-num="${responseDTO.start-1} src="/img/btn_prevpage.png" alt="이전 페이지로 이동"></a>-->
-<!--                </c:if>-->
-<!--                <c:forEach begin="${responseDTO.start}" end="${responseDTO.end}" var="num">-->
-<!--                    <a ><span data-num="${num}" class="pagenum ${responseDTO.page==num ?"currentpage":""}">${num}</span></a>-->
-<!--                </c:forEach>-->
-<!--                <c:if test="${responseDTO.next}">-->
-<!--                    <a data-num="${responseDTO.end+1}" class="nextpage  pbtn"><img data-num="${responseDTO.end+1}" src="/img/btn_nextpage.png" alt="다음 페이지로 이동"></a>-->
-<!--                </c:if>-->
-<!--                <a data-num="${responseDTO.last}" class="lastpage  pbtn"><img data-num="${responseDTO.last}" src="/img/btn_lastpage.png" alt="마지막 페이지로 이동"></a>-->
+                <a th:data-num="1" class="firstpage  pbtn"><img th:data-num="1" src="/img/btn_firstpage.png" alt="첫 페이지로 이동"></a>
+                <a th:if="${responseDTO.prev}" data-num="${responseDTO.start-1}" class="prevpage  pbtn"><img th:data-num="${responseDTO.start-1}" src="/img/btn_prevpage.png" alt="이전 페이지로 이동"></a>
+                <a th:each="num : ${#numbers.sequence(responseDTO.start, responseDTO.end)}"><span th:data-num="${num}" th:class="|pagenum ${responseDTO.page==num ?'currentpage':''}|">[[${num}]]</span></a>
+                <a th:if="${responseDTO.next}" data-num="${responseDTO.end+1}" class="nextpage  pbtn"><img th:data-num="${responseDTO.end+1}" src="/img/btn_nextpage.png" alt="다음 페이지로 이동"></a>
+                <a th:data-num="${responseDTO.last}" class="lastpage  pbtn"><img th:data-num="${responseDTO.last}" src="/img/btn_lastpage.png" alt="마지막 페이지로 이동"></a>
             </div>
             <!-- //pagination -->
 
@@ -141,7 +135,7 @@
         }
         const num = target.getAttribute("data-num");
         const formObj = document.querySelector("form");
-        formObj.innerHTML += `<input type='hidden' name='page' value='\${num}'/>`;
+        formObj.innerHTML += `<input type='hidden' name='page' value='${num}'/>`;
         formObj.submit();
     });
 </script>

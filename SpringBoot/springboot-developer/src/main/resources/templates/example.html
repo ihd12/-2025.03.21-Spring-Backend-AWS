@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -27,6 +27,9 @@
     <!-- th:href : uri 설정에 사용되는 타임리프 -->
     <!-- @{}를 이용하여 uri를 작성  -->
     <!-- 중괄호에 괄호안의 id값을 설정해줌 -->
+    <!--/api/articles/1-->
     <a th:href="@{/api/articles/{id}(id=${person.id})}">글 보기</a>
+<!--    <a th:href="@{/api/articles(id=${person.id})}">글 보기</a>-->
+    <!--/api/articles?id=1-->
 </body>
 </html>
