@@ -8,5 +8,7 @@ import org.zerock.tourist_springboot.board.domain.Board;
 
 import java.util.List;
 
-public interface BoardRepository extends JpaRepository<Board,Long>, BoardRepositoryCustom {
+public interface BoardRepository
+        extends JpaRepository<Board,Long>,
+        BoardRepositoryCustom, BoardDslRepository {
 }

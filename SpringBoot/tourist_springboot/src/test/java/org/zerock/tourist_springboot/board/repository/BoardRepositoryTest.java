@@ -24,7 +24,7 @@ class BoardRepositoryTest {
                         .visitCount(0)
                 .build());
         System.out.println(vo);
-        boardRepository.updateVisitCount(1L);
+//        boardRepository.updateVisitCount(1L);
         Board vo2 =  boardRepository.findById(1L).get();
         System.out.println(vo2);
     }
