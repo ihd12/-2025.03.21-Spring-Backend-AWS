@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -24,11 +25,14 @@ import static org.springframework.boot.autoconfigure.security.servlet.PathReques
 public class WebSecurityConfig {
     @Bean
     public WebSecurityCustomizer configure(){
+        //web.ignoring() : 스프링 시큐리티를 적용하지 않을 주소들을 설정
         return (web) -> web.ignoring()
                 // /h2-console의 접속에 스프링 시큐리티를 해제
                 .requestMatchers(toH2Console())
                 // resources폴더의 static폴더 접속에 스프링 시큐리티를 해제
-                .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
+                //.requestMatchers("/articles")
+                ;
     }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
@@ -59,30 +63,32 @@ public class WebSecurityConfig {
                 ).csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
-    @Bean
-    public AuthenticationManager authenticationManager(
-            HttpSecurity http,
-            BCryptPasswordEncoder bCryptPasswordEncoder,
-            UserDetailsService userDetailsService
-    ) throws Exception{
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
-        authProvider.setPasswordEncoder(bCryptPasswordEncoder);
-        return new ProviderManager(authProvider);
-    }
 //    @Bean
 //    public AuthenticationManager authenticationManager(
 //            HttpSecurity http,
-//            BCryptPasswordEncoder passwordEncoder,
+//            BCryptPasswordEncoder bCryptPasswordEncoder,
 //            UserDetailsService userDetailsService
-//    ) throws Exception {
-//        AuthenticationManagerBuilder authBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
-//        authBuilder
-//                .userDetailsService(userDetailsService)
-//                .passwordEncoder(passwordEncoder);
-//
-//        return authBuilder.build();
+//    ) throws Exception{
+//        //인증 관리자 설정
+//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+//        //사용자 정보를 가지고올 방식 설정 => H2데이터베이서스에서 User를 가지고 오도록 설정
+//        authProvider.setUserDetailsService(userDetailsService);
+//        // 비밀번호 암호화 인코더 설정
+//        authProvider.setPasswordEncoder(bCryptPasswordEncoder);
+//        return new ProviderManager(authProvider);
 //    }
+    @Bean
+    public AuthenticationManager authenticationManager(
+            HttpSecurity http,
+            BCryptPasswordEncoder passwordEncoder,
+            UserDetailsService userDetailsService
+    ) throws Exception {
+        AuthenticationManagerBuilder authBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+        authBuilder
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder);
+        return authBuilder.build();
+    }
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
