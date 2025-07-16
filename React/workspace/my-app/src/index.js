@@ -8,6 +8,10 @@ import Clock from './chapter_04/Clock';
 import CommentList from './chapter_05/CommentList';
 import NotificationList from './chapter_06/NotificationList';
 import Counter from './chapter_07/Counter';
+import Counter_useEffect from './chapter_07/Counter_useEffect';
+import NotificationList_useHook from './chapter_07/NotificationList_useHook';
+import TextInputWithFocusButton from './chapter_07/TextInputWithFocusButton';
+import Accommodate from './chapter_07/Accommodate';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // setInterval(()=>{
@@ -17,8 +21,12 @@ root.render(
     {/* <Library /> */}
     {/* <Clock /> */}
     {/* <CommentList /> */}
-    <NotificationList />
+    {/* <NotificationList /> */}
     {/* <Counter /> */}
+    {/* <Counter_useEffect /> */}
+    {/* <NotificationList_useHook /> */}
+    {/* <TextInputWithFocusButton /> */}
+    <Accommodate />
   </React.StrictMode>
 )
 //}, 1000)
