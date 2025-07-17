@@ -12,6 +12,10 @@ import Counter_useEffect from './chapter_07/Counter_useEffect';
 import NotificationList_useHook from './chapter_07/NotificationList_useHook';
 import TextInputWithFocusButton from './chapter_07/TextInputWithFocusButton';
 import Accommodate from './chapter_07/Accommodate';
+import ConfirmButton from './chapter_08/ConfirmButton';
+import LandingPage from './chapter_09/LandingPage';
+import AttendanceBook from './chapter_10/AttendanceBook';
+import GetImage from './chapter_10/GetImage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // setInterval(()=>{
@@ -26,7 +30,11 @@ root.render(
     {/* <Counter_useEffect /> */}
     {/* <NotificationList_useHook /> */}
     {/* <TextInputWithFocusButton /> */}
-    <Accommodate />
+    {/* <Accommodate /> */}
+    {/* <ConfirmButton /> */}
+    {/* <LandingPage /> */}
+    {/* <AttendanceBook /> */}
+    <GetImage />
   </React.StrictMode>
 )
 //}, 1000)
