@@ -16,6 +16,9 @@ import ConfirmButton from './chapter_08/ConfirmButton';
 import LandingPage from './chapter_09/LandingPage';
 import AttendanceBook from './chapter_10/AttendanceBook';
 import GetImage from './chapter_10/GetImage';
+import Practice1 from './practice/Practice1';
+import NameForm from './chapter_11/NameForm';
+import Practice2 from './practice/Practice2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // setInterval(()=>{
@@ -34,7 +37,10 @@ root.render(
     {/* <ConfirmButton /> */}
     {/* <LandingPage /> */}
     {/* <AttendanceBook /> */}
-    <GetImage />
+    {/* <GetImage /> */}
+    {/* <Practice1 /> */}
+    {/* <NameForm /> */}
+    <Practice2 />
   </React.StrictMode>
 )
 //}, 1000)
