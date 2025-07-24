@@ -22,4 +22,14 @@ export const emotionList = [
     {id : 3, name:"그럭저럭", img: getEmotionImgById(3),},
     {id : 4, name:"나쁨", img: getEmotionImgById(4),},
     {id : 5, name:"끔찍함", img: getEmotionImgById(5),},
-]
+];
+// 월의 첫날과 마지막날을 계산하는 함수
+export const getMonthRangeByDate = (date) =>{
+    const beginTimeStamp = new Date(
+        date.getFullYear(), date.getMonth(), 1).getTime();
+    const endTimeStamp = new Date(
+        date.getFullYear(), date.getMonth()+1, 0,
+        23,59,59
+    ).getTime();
+    return {beginTimeStamp, endTimeStamp};
+}

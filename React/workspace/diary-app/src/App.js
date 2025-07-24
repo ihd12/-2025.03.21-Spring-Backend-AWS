@@ -6,9 +6,9 @@ import Diary from './pages/Diary';
 import Edit from './pages/Edit';
 import React, { useEffect, useReducer, useRef, useState } from 'react';
 const mockData = [
-  {id:"1", date:new Date().getTime() - 1, content:"mock content1", emotionId:1,},
-  {id:"2", date:new Date().getTime() - 2, content:"mock content2", emotionId:2,},
-  {id:"3", date:new Date().getTime() - 3, content:"mock content3", emotionId:3,},
+  {id:"1", date:new Date("2025-06-01").getTime(), content:"mock content1", emotionId:1,},
+  {id:"2", date:new Date("2025-07-01").getTime(), content:"mock content2", emotionId:2,},
+  {id:"3", date:new Date("2025-08-01").getTime(), content:"mock content3", emotionId:3,},
 ];
 
 function reducer(state, action){
