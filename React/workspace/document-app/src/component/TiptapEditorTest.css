@@ -1,0 +1,22 @@
+.a4-container {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 20mm;
+  margin: 20px auto;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-sizing: border-box;
+}
+
+/* 인쇄 모드 대응 */
+@media print {
+  body {
+    background: white;
+  }
+
+  .a4-container {
+    margin: 0;
+    box-shadow: none;
+    page-break-after: always;
+  }
+}
